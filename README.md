@@ -6,17 +6,22 @@
 
 [![Join the chat at https://gitter.im/jlevy/the-art-of-command-line](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jlevy/the-art-of-command-line?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-- [前言](#前言)
-- [基础](#基础)
-- [日常使用](#日常使用)
-- [文件及数据处理](#文件及数据处理)
-- [系统调试](#系统调试)
-- [单行脚本](#单行脚本)
-- [冷门但有用](#冷门但有用)
-- [仅限 OS X 系统](#仅限-os-x-系统)
-- [仅限 Windows 系统](#仅限-windows-系统)
-- [更多资源](#更多资源)
-- [免责声明](#免责声明)
+- [命令行的艺术](#命令行的艺术)
+  - [前言](#前言)
+  - [基础](#基础)
+  - [日常使用](#日常使用)
+  - [文件及数据处理](#文件及数据处理)
+  - [系统调试](#系统调试)
+  - [单行脚本](#单行脚本)
+  - [冷门但有用](#冷门但有用)
+  - [仅限 OS X 系统](#仅限-os-x-系统)
+  - [仅限 Windows 系统](#仅限-windows-系统)
+    - [在 Winodws 下获取 Unix 工具](#在-winodws-下获取-unix-工具)
+    - [实用 Windows 命令行工具](#实用-windows-命令行工具)
+    - [Cygwin 技巧](#cygwin-技巧)
+  - [更多资源](#更多资源)
+  - [免责声明](#免责声明)
+  - [授权条款](#授权条款)
 
 
 ![curl -s 'https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md' | egrep -o '`\w+`' | tr -d '`' | cowsay -W50](cowsay.png)
@@ -188,7 +193,7 @@
 - 使用 `fpp`（[PathPicker](https://github.com/facebook/PathPicker)）可以与基于另一个命令(例如 `git`）输出的文件交互。
 
 - 将 web 服务器上当前目录下所有的文件（以及子目录）暴露给你所处网络的所有用户，使用：
-`python -m SimpleHTTPServer 7777` （使用端口 7777 和 Python 2）或`python -m http.server 7777` （使用端口 7777 和 Python 3）。
+`python3 -m SimpleHTTPServer 7777`  ( 使用端口 7777 和 Python 3，遇到无模块错误时，可以执行 `python3 -m http.server 7777`  )。
 
 - 以其他用户的身份执行命令，使用 `sudo`。默认以 root 用户的身份执行；使用 `-u` 来指定其他用户。使用 `-i` 来以该用户登录（需要输入_你自己的_密码）。
 
@@ -205,7 +210,7 @@
 
 ## 文件及数据处理
 
-- 在当前目录下通过文件名查找一个文件，使用类似于这样的命令：`find . -iname '*something*'`。在所有路径下通过文件名查找文件，使用 `locate something` （但注意到 `updatedb` 可能没有对最近新建的文件建立索引，所以你可能无法定位到这些未被索引的文件）。
+- 在当前目录下通过文件名查找一个文件，使用类似于这样的命令：`find . -iname '*something*'`。在所有路径下通过文件名查找文件，使用 `locate something` （但注意到 `updatedb` 可能没有对最近新建的文件建立索引，所以你可能无法定位到这些未被索引的文件）。`find . -inum 1582344` 可以查找 inode 号为 1582344 的文件。
 
 - 使用 [`ag`](https://github.com/ggreer/the_silver_searcher) 在源代码或数据文件里检索（`grep -r` 同样可以做到，但相比之下 `ag` 更加先进）。
 
@@ -235,7 +240,7 @@
 
 - 注意到语言设置（中文或英文等）对许多命令行工具有一些微妙的影响，比如排序的顺序和性能。大多数 Linux 的安装过程会将 `LANG` 或其他有关的变量设置为符合本地的设置。要意识到当你改变语言设置时，排序的结果可能会改变。明白国际化可能会使 sort 或其他命令运行效率下降*许多倍*。某些情况下（例如集合运算）你可以放心的使用 `export LC_ALL=C` 来忽略掉国际化并按照字节来判断顺序。
 
-- 你可以单独指定某一条命令的环境，只需在调用时把环境变量设定放在命令的前面，例如 `TZ=Pacific/Fiji date` 可以获取斐济的时间。
+- 你可以单独指定某一条命令的环境，只需在调用时把环境变量设定放在命令的前面，例如 `TZ=Pacific/Fiji date` 可以获取斐济的时间。时区可以通过 `timedatectl list-timezones` 来获取。
 
 - 了解如何使用 `awk` 和 `sed` 来进行简单的数据处理。 参阅 [One-liners](#one-liners) 获取示例。
 
