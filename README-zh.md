@@ -1,10 +1,4 @@
-🌍
-*[Čeština](README-cs.md) ∙ [Deutsch](README-de.md) ∙ [Ελληνικά](README-el.md) ∙ [English](README.md) ∙ [Español](README-es.md) ∙ [Français](README-fr.md) ∙ [Indonesia](README-id.md) ∙ [Italiano](README-it.md) ∙ [日本語](README-ja.md) ∙ [한국어](README-ko.md) ∙ [polski](README-pl.md) ∙ [Português](README-pt.md) ∙ [Română](README-ro.md) ∙ [Русский](README-ru.md) ∙ [Slovenščina](README-sl.md) ∙ [Українська](README-uk.md) ∙ [简体中文](README-zh.md) ∙ [繁體中文](README-zh-Hant.md)*
-
-
 # 命令行的艺术
-
-[![Join the chat at https://gitter.im/jlevy/the-art-of-command-line](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jlevy/the-art-of-command-line?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 - [命令行的艺术](#命令行的艺术)
   - [前言](#前言)
@@ -16,7 +10,7 @@
   - [冷门但有用](#冷门但有用)
   - [仅限 OS X 系统](#仅限-os-x-系统)
   - [仅限 Windows 系统](#仅限-windows-系统)
-    - [在 Winodws 下获取 Unix 工具](#在-winodws-下获取-unix-工具)
+    - [在 Windows 下获取 Unix 工具](#在-windows-下获取-unix-工具)
     - [实用 Windows 命令行工具](#实用-windows-命令行工具)
     - [Cygwin 技巧](#cygwin-技巧)
   - [更多资源](#更多资源)
@@ -33,7 +27,7 @@
 [首次](http://www.quora.com/What-are-some-lesser-known-but-useful-Unix-commands)
 [出现](http://www.quora.com/What-are-the-most-useful-Swiss-army-knife-one-liners-on-Unix)
 于 [Quora](http://www.quora.com/What-are-some-time-saving-tips-that-every-Linux-user-should-know)，
-但已经迁移到了 Github，并由众多高手做出了许多改进。
+但已经迁移到了 GitHub，并由众多高手做出了许多改进。
 如果你在本文中发现了错误或者存在可以改善的地方，请[**贡献你的一份力量**](/CONTRIBUTING.md)。
 
 ## 前言
@@ -181,7 +175,7 @@
 
 - 一些其他的关于 ssh 的选项是与安全相关的，应当小心翼翼的使用。例如你应当只能在可信任的网络中启用 `StrictHostKeyChecking=no`，`ForwardAgent=yes`。
 
-- 考虑使用 [`mosh`](https://mosh.mit.edu/) 作为 ssh 的替代品，它使用 UDP 协议。它可以避免连接被中断并且对带宽需求更小，但它需要在服务端做相应的配置。
+- 考虑使用 [`mosh`](https://mosh.org/) 作为 ssh 的替代品，它使用 UDP 协议。它可以避免连接被中断并且对带宽需求更小，但它需要在服务端做相应的配置。
 
 - 获取八进制形式的文件访问权限（修改系统设置时通常需要，但 `ls` 的功能不那么好用并且通常会搞砸），可以使用类似如下的代码：
 ```sh
@@ -559,7 +553,7 @@ mkdir empty && rsync -r --delete empty/ some-dir && rmdir some-dir
 
 以下是*仅限于* Windows 系统的技巧。
 
-### 在 Winodws 下获取 Unix 工具
+### 在 Windows 下获取 Unix 工具
 
 - 可以安装 [Cygwin](https://cygwin.com/) 允许你在 Microsoft Windows 中体验 Unix shell 的威力。这样的话，本文中介绍的大多数内容都将适用。
 
